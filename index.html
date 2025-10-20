@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ashir Graphics Tech & Designs — Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0b0b0b;
+      --muted: #bfbfbf;
+      --gold: #d4af37; /* warm gold */
+      --card: #0f0f10;
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Layout */
+    .container{max-width:1100px;margin:0 auto;padding:28px;}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    /* circular photo logo */
+    .logo-frame{
+      width:76px;height:76px;border-radius:50%;
+      display:inline-grid;place-items:center;
+      background:linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:3px solid rgba(212,175,55,0.18);
+      padding:6px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      transition:transform .35s ease, box-shadow .35s ease;
+    }
+    .logo-frame:hover{transform:translateY(-4px); box-shadow:0 10px 28px rgba(0,0,0,0.7)}
+    .logo-photo{
+      width:100%;height:100%;border-radius:50%;object-fit:cover;
+      border:3px solid var(--gold);
+      box-shadow:0 3px 8px rgba(212,175,55,0.08);
+    }
+    .brand-text{display:flex;flex-direction:column;line-height:1}
+    .brand h1{margin:0;font-size:20px;letter-spacing:0.4px;font-weight:700}
+    .brand p{margin:0;font-size:12px;color:var(--muted);margin-top:4px}
+
+    nav{display:flex;gap:12px;align-items:center}
+    a.btn{
+      display:inline-block;padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none;
+      color:var(--bg);background:var(--gold);box-shadow:0 6px 18px rgba(212,175,55,0.06);
+      transition:transform .2s ease;
+    }
+    a.btn:hover{transform:translateY(-3px)}
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:42px 0;
+    }
+    .hero-left h2{font-size:36px;margin:0 0 12px 0;line-height:1.02}
+    .accent{color:var(--gold)}
+    .hero-left p{color:var(--muted);margin:0 0 18px 0}
+    .cta-row{display:flex;gap:12px;margin-top:8px}
+    .outline{
+      border:1px solid rgba(255,255,255,0.06);
+      padding:10px 14px;border-radius:8px;color:var(--muted);
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    }
+
+    /* Hero photo card */
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      border-radius:14px;padding:16px;border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+    }
+    .hero-photo{
+      width:100%;height:360px;border-radius:10px;object-fit:cover;border:4px solid rgba(212,175,55,0.06);
+    }
+    .badge{
+      display:inline-block;margin-top:12px;padding:8px 10px;border-radius:999px;font-size:13px;
+      background:rgba(212,175,55,0.08);color:var(--gold);font-weight:600;border:1px solid rgba(212,175,55,0.07)
+    }
+
+    /* Services */
+    .services{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{
+      background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover{transform:translateY(-6px);box-shadow:0 22px 36px rgba(0,0,0,0.6)}
+    .card h4{margin:0 0 8px 0}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Contact */
+    .contact-panel{margin-top:28px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.03);display:flex;gap:16px;align-items:center;justify-content:space-between}
+    .contact-col{display:flex;flex-direction:column;gap:6px}
+    .contact-col strong{font-size:14px}
+    .socials{display:flex;gap:10px;align-items:center}
+
+    /* Footer */
+    footer{margin-top:42px;padding:26px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,0.02);}
+
+    /* small screens */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:22px}
+      .hero-photo{height:260px}
+      .services{grid-template-columns:1fr 1fr}
+      .logo-frame{width:64px;height:64px}
+    }
+    @media (max-width:560px){
+      .services{grid-template-columns:1fr}
+      header{flex-direction:column;gap:12px;align-items:flex-start}
+      nav{width:100%;justify-content:space-between}
+    }
+
+    /* Simple fade-up animations */
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <!-- Circular photo logo: replace "photo.jpg" with your file if different -->
+        <div class="logo-frame" aria-hidden="true">
+          <img src="photo.jpg" alt="Ashir photo" class="logo-photo">
+        </div>
+
+        <div class="brand-text">
+          <h1>Ashir Graphics Tech & Designs</h1>
+          <p>Web • Graphics • Logos • AI Design</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#services" class="outline">Services</a>
+        <a href="#contact" class="outline">Contact</a>
+        <a href="tel:+2348109240024" class="btn">Call +234 810 924 0024</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <h2 class="reveal">We build bold brands & smart websites — <span class="accent">Ashir Graphics</span></h2>
+          <p class="reveal">We specialize in modern web development, eye-catching graphic design, and AI-assisted logo creation. Clean interfaces, fast performance, and brand-first visuals.</p>
+
+          <div class="cta-row reveal">
+            <a class="btn" href="#contact">Get a Quote</a>
+            <a class="outline" href="mailto:ashiruyahuza309@gmail.com">Email: ashiruyahuza309@gmail.com</a>
+          </div>
+
+          <div style="margin-top:20px" class="reveal">
+            <span class="badge">Black • Gold • Premium</span>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <!-- big photo (same image used for logo but larger). Keep it if you want -->
+          <img src="photo.jpg" alt="Ashir" class="hero-photo">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+            <div style="font-size:13px;color:var(--muted)">Founder — Ashir Graphics Tech & Designs</div>
+            <div style="font-weight:700;color:var(--gold)">Brand & Web</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" style="margin-top:24px">
+        <h3 style="margin:0 0 12px 0">Selected Services</h3>
+        <div class="services">
+          <div class="card reveal">
+            <h4>Web Development</h4>
+            <p>Responsive websites, landing pages, e-commerce, performance-focused builds and deployment support.</p>
+          </div>
+          <div class="card reveal">
+            <h4>Graphic Design</h4>
+            <p>Posters, social kits, banners and visual campaigns tailored to your audience and platform.</p>
+          </div>
+          <div class="card reveal">
+            <h4>Logo & Branding</h4>
+            <p>Monograms, wordmarks, color systems and brand guidelines to make your business memorable.</p>
+          </div>
+          <div class="card reveal">
+            <h4>AI Design</h4>
+            <p>Fast concept generation, mockups, iterations and AI-assisted creative workflows.</p>
+          </div>
+          <div class="card reveal">
+            <h4>Design for Social</h4>
+            <p>Thumbnails, reels-ready assets and high-conversion social creatives.</p>
+          </div>
+          <div class="card reveal">
+            <h4>Consult & Strategy</h4>
+            <p>Design roadmaps, brand audits, and technical recommendations for scaling your site or campaigns.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="contact-panel reveal">
+          <div class="contact-col">
+            <div style="color:var(--muted);font-size:12px">Call / WhatsApp</div>
+            <strong>+234 810 924 0024</strong>
+            <div style="color:var(--muted);font-size:12px;margin-top:6px">Email</div>
+            <strong>ashiruyahuza309@gmail.com</strong>
+          </div>
+
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+            <div style="color:var(--muted);font-size:12px">Location</div>
+            <strong>Nigeria</strong>
+            <div style="margin-top:8px">
+              <a class="btn" href="mailto:ashiruyahuza309@gmail.com">Message</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <div>By Ashir Graphics Designs</div>
+        <div style="margin-top:8px;color:var(--muted)">© <span id="year"></span> Ashir Graphics Tech & Designs</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple reveal on scroll
+    function revealOnScroll(){
+      const items = document.querySelectorAll('.reveal');
+      const trigger = window.innerHeight * 0.88;
+      items.forEach(el=>{
+        const top = el.getBoundingClientRect().top;
+        if(top < trigger) el.classList.add('visible');
+     
